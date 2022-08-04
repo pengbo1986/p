@@ -1,0 +1,31 @@
+######## server ########
+server:
+  port: 8081            #端口配置，如果是https,80端口要配置成433
+  address: 0.0.0.0      #服务地址，0.0.0.0表示内外网都可以访问，如果不配置Adress，端口可能不会生效
+
+  servlet:
+    context-path: /p    #url根路径
+  tomcat:
+    uri-encoding: UTF-8
+######## datasource ########发
+spring:
+  datasource:
+    username: pengbo
+    password: 12345678
+    url: jdbc:mysql://localhost:3306/testdb?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=GMT%2B8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+######## logging ########
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{50}:%line %msg%n'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} -- [%thread] %-5level %logger{50} %msg%n'
+  file:
+    name: ./logs/prun.log
+    #path: ./logs
+  level:
+    root: info
+    org: debug
+  logback:
+    rollingpolicy:
+      max-history: 5
+      max-file-size: 1MB
